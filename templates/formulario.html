@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Solicitação de Manutenção</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 10px; 
+            background-color: #f7f7f7;
+        }
+        h1 { color: #2c3e50; text-align: center; }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form { 
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 6px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button { 
+            padding: 10px; 
+            width: 100%;
+            background: #2980b9; 
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #1f618d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Nova Solicitação de Manutenção</h1>
+
+        <form method="POST" action="/nova">
+            <input type="text" name="solicitante" placeholder="Seu nome" required>
+            <input type="email" name="email_solicitante" placeholder="Seu e-mail" required>
+            <input type="text" name="equipamento" placeholder="Equipamento" required>
+            <textarea name="descricao" placeholder="Descrição" rows="4" required></textarea>
+            <button type="submit">Enviar Solicitação</button>
+        </form>
+    </div>
+</body>
+</html>

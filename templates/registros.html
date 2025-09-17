@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Registros de Solicitações</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial; margin: 10px; background: #f7f7f7; }
+        h1 { text-align: center; color: #2c3e50; }
+        .table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; }
+        table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 700px; background: #fff; border-radius: 8px; overflow: hidden; }
+        th, td { border: 1px solid #ccc; padding: 6px 8px; font-size: 13px; text-align: left; }
+        th { background: #3498db; color: white; position: sticky; top: 0; z-index: 2; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        tr:hover { background: #e0f0ff; }
+        td { white-space: nowrap; }
+        .btn { padding: 4px 8px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .btn:hover { background: #1e8449; }
+    </style>
+</head>
+<body>
+    <h1>📋 Solicitações de Manutenção</h1>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Solicitante</th>
+                <th>E-mail</th>
+                <th>Equipamento</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+            {% for s in solicitacoes %}
+            <tr>
+                <td>{{ s["ID"] }}</td>
+                <td>{{ s["Solicitante"] }}</td>
+                <td>{{ s["E-mail"] }}</td>
+                <td>{{ s["Equipamento"] }}</td>
+                <td>{{ s["Descrição"] }}</td>
+                <td>{{ s["Data"] }}</td>
+                <td>{{ s["Status"] }}</td>
+                <td>
+                    {% if s["Status"] != "Concluída" %}
+                    <form method="POST" action="/concluir/{{ s['ID'] }}">
+                        <button type="submit" class="btn">Concluída</button>
+                    </form>
+                    {% else %}
+                    -
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
